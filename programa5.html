@@ -1,0 +1,125 @@
+<meta charset="UTF-8">
+
+<h1 style='position:absolute; top:40px; left:300px'>Clique no alvo!</h1>
+
+    <div style="position:absolute; top:100px; left:100px; z-index:1">  
+        <canvas width='600' height='400'>
+        </canvas>
+    </div>
+<div style='position:absolute; top:80; left:710'>
+    <p>Dificuldade:</p>
+    <button onclick="nivelDeDificuldade(1000)">Fácil</button>
+    <br>
+    <button onclick="nivelDeDificuldade(850)">Médio</button>
+    <br>
+    <button onclick="nivelDeDificuldade(700)">Díficil</button>
+</div>
+
+<script>
+
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+
+
+    pincel.fillStyle = 'lightblue';
+    pincel.fillRect(0, 0, 600, 400);
+
+    pincel.fillStyle = 'blue';
+    pincel.beginPath();
+    pincel.moveTo(280, 220);
+    pincel.lineTo(280, 180);
+    pincel.lineTo(320, 200);
+    pincel.lineTo(280, 220);
+    pincel.fill();
+    pincel.lineWidth = 1;
+    pincel.strokeStyle = 'black';
+    pincel.stroke();
+
+    
+    var acertou;
+    var raio = 10;
+    var xAleatorio;
+    var yAleatorio;
+    var intervaloIniciado = false;
+    var dificuldade = 1000
+
+    function desenhaCirculo(x, y, raio, cor) {
+
+        pincel.fillStyle = cor;
+        pincel.beginPath();
+        pincel.arc(x, y, raio, 0, 2 * Math.PI);
+        pincel.fill();
+    }
+
+    function limpaTela() {
+
+        pincel.clearRect(0, 0, 600, 400);
+    }
+
+    function desenhaAlvo(x, y){
+
+    desenhaCirculo(x, y, raio+20, 'red');
+    desenhaCirculo(x, y, raio+10, 'white');
+    desenhaCirculo(x, y, raio, 'red');
+    }
+
+    function sorteiaPosicao(xmaximo, ymaximo) {
+
+        xAleatorio = Math.floor(Math.random() * xmaximo);
+        yAleatorio = Math.floor(Math.random() * ymaximo);
+
+        if( xAleatorio < 30 ){
+
+            xAleatorio = 30;
+        }
+
+        if( yAleatorio < 30 ){
+
+            yAleatorio = 30;
+        }
+
+    }
+
+    function atualizaTela(){
+
+    limpaTela();
+    sorteiaPosicao(570, 370);
+    desenhaAlvo(xAleatorio, yAleatorio);
+    }
+
+    function dispara(evento) {
+
+        var x = evento.pageX - 100 - tela.offsetLeft;
+        var y = evento.pageY - 100 - tela.offsetTop;
+        if(intervaloIniciado == false){
+
+            jogoIniciado = setInterval(atualizaTela, dificuldade);
+            intervaloIniciado = true;
+        }
+
+        if(( x > xAleatorio - raio) 
+            && (x < xAleatorio + raio) 
+            && (y > yAleatorio - raio) 
+            && (y < yAleatorio + raio)) {
+
+            jogoIniciado = 0;
+            //intervaloIniciado = false;
+            alert('Boa mira, você acertou!');
+        }
+
+    } 
+
+    //setInterval(atualizaTela, 800);
+
+    tela.onclick = dispara;
+
+    var jogoIniciado;
+
+    function nivelDeDificuldade(nivel){
+
+        jogoIniciado = 0;
+        dificuldade = nivel;
+        intervaloIniciado = false;
+    }
+
+</script>
