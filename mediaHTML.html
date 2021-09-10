@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Calcule sua média de notas</title>
+		<link rel="stylesheet" href="media.css">
+	</head>
+	<body>
+		<div class='principal'>
+			<p>
+		      <label class="nota" for="number">Nota 1</label>
+		      <input name="nota 1" id='nota1' class="nota" type="number" />
+	    	</p>
+
+	    	<p>
+		      <label class="nota" for="number">Nota 2</label>
+		      <input id='nota2' name="nota 1" class="nota" type="number" />
+	    	</p>
+
+	    	<p>
+		      <label class="nota"for="number">Nota 3</label>
+		      <input id='nota3' name="nota 1" class="nota" type="number" />
+	    	</p>
+
+	    	<p>
+		    	<button id='calcula' onclick="calcular()">Calcular</button>
+		  	</p>
+
+	    	<p>
+		      <label class="nota" for="number">Média</label>
+		      <input id='media' name="nota 1" class="nota" type="number" />
+	    	</p>
+    	</div>
+
+	</body>	
+
+</html>
+
+<script>
+
+	var media = 0;
+	function calcular() {
+		
+		media = (parseInt(nota1.value) + parseInt(nota2.value) + parseInt(nota3.value))/3;
+		document.getElementById("media").value = media;
+
+			if(media >= 7){
+
+				alert('Parabéns, você passou!/nSua media foi de: ' + media);
+			}
+				if(media >= 6 && media < 7){
+
+					alert('Você passou, mas precisa estudar mais. /n Sua media foi de: ' + media);
+				}
+					if(media < 6){
+
+						alert('Você não passou, se esforce mais./nSua media foi de: ' + media);
+					}
+	}
+
+
+</script>

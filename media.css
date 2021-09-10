@@ -1,0 +1,22 @@
+body {
+
+	background: #CCCCCC;
+}
+.nota {
+
+	width:  6%;
+	margin-left: 45%;
+	appearance: none;
+	color: #4CAF50;
+  	font-size: 30px;
+
+  }
+
+  #calcula {
+
+  	margin-left: 43.5%;
+  	font-size:  31px;
+  	color: #FFFFFF;
+  	background-color: #4CAF50;
+
+ }
