@@ -1,22 +1,48 @@
 body {
 
-	background: #CCCCCC;
+	background-image: linear-gradient(to right, #4CAF50, Green, #0e4a11);
+}
+
+.principal {
+
+	padding-top: 5%;
+	align-items: center;
 }
 .nota {
 
 	width:  6%;
 	margin-left: 45%;
-	appearance: none;
-	color: #4CAF50;
+	padding: 5px;
+	-webkit-appearance: none;
+	color: black;
   	font-size: 30px;
+  	border-radius: 10px 15px;
+  	font-family: 'Montserrat', sans-serif;
 
   }
 
   #calcula {
 
-  	margin-left: 43.5%;
+  	margin-left: 43.8%;
   	font-size:  31px;
+  	padding:  5px;
   	color: #FFFFFF;
   	background-color: #4CAF50;
+  	border-radius: 15px;
 
- }
+}
+
+ #calcula:hover 
+
+{ background-color: #0E4A11; 
+
+transition: 0.3s;
+opacity: 0.9;
+
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
